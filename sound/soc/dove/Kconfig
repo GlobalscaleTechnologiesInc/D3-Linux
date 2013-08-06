@@ -1,0 +1,22 @@
+config SND_DOVE_SOC
+	tristate "SoC Audio for the Marvell Dove chip"
+	depends on ARCH_KIRKWOOD
+	help
+	  Say Y or M if you want to add support for codecs attached to
+	  the Dove I2S interface. You will also need to select the
+	  audio interfaces to support below.
+
+config SND_DOVE_SOC_I2S
+	tristate
+
+config SND_DOVE_SOC_D2PLUG
+	tristate "SoC Audio support for Dove d2plug"
+	depends on SND_DOVE_SOC
+	depends on I2C
+	select SND_DOVE_SOC_I2S
+	select SND_SOC_RT5630
+	help
+	  Say Y if you want to add support for SoC audio on
+	  d2plug.
+
+
